@@ -17,7 +17,7 @@
         <table class="table" width="100%">
             <thead>
             <tr>
-                <th>Node Identifier</th>
+                <th>Node Id</th>
                 <th>Network</th>
                 <th>Client</th>
                 <th>Version</th>
@@ -28,7 +28,7 @@
             </thead>
             <tfoot>
             <tr>
-                <th>Node Identifier</th>
+                <th>Node Id</th>
                 <th>Network</th>
                 <th>Client</th>
                 <th>Version</th>
@@ -39,7 +39,7 @@
             </tfoot>
             <tbody>
             <tr>
-                <td>414330310000000000000000000000005cf2a455534133705246625a456533353353676562486447</td>
+                <td>895e3c0431b5eb6579e89498275d99821a7279f3bfb00cb9f5eae7b04ab35d3f</td>
                 <td>Testnet</td>
                 <td>AC</td>
                 <td>0.0.1</td>
@@ -48,7 +48,7 @@
                 <td>SA3pRFbZEe353SgebHdGl</td>
             </tr>
             <tr>
-                <td>414330310000000000000000000000005cf2a455534133705246625a456533353353676562486447</td>
+                <td>895e3c0431b5eb6579e89498275d99821a7279f3bfb00cb9f5eae7b04ab35d3f</td>
                 <td>Testnet</td>
                 <td>AC</td>
                 <td>0.0.1</td>
@@ -57,7 +57,7 @@
                 <td>SA3pRFbZEe353SgebHdGl</td>
             </tr>
             <tr>
-                <td>414330310000000000000000000000005cf2a455534133705246625a456533353353676562486447</td>
+                <td>895e3c0431b5eb6579e89498275d99821a7279f3bfb00cb9f5eae7b04ab35d3f</td>
                 <td>Testnet</td>
                 <td>AC</td>
                 <td>0.0.1</td>
@@ -87,7 +87,18 @@ export default {
     },
 
     created() {
+        this.$options.sockets.node_announce = (data) => {
+            console.log(data)
+        }
+    },
 
+    sockets: {
+        connect() {
+            console.log('socket connected')
+        },
+        customEmit(val) {
+            console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+        }
     }
 }
 </script>

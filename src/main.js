@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import VueSocketio from 'vue-socket-io';
+import VueSocketio from 'vue-socket.io-extended';
+import io from 'socket.io-client';
 import axios from 'axios'
 import Vuex from 'vuex'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -17,7 +18,8 @@ import store from './store'
 
 Vue.use(Vuex);
 
-Vue.use(VueSocketio, 'http://127.0.0.1:8000');
+Vue.use(VueSocketio, io('http://127.0.0.1:8000'));
+
 library.add(faHome, faBook, faPencilAlt, faSignInAlt)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
