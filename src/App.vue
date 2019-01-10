@@ -22,8 +22,8 @@ export default {
         ChHeader,
         ChFooter
     },
-        created() {
-         console.log(this.$sockets)
+        mounted() {
+         console.log(this)
     }
 }
 </script>

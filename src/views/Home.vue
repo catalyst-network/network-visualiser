@@ -38,25 +38,7 @@
             </tr>
             </tfoot>
             <tbody>
-            <tr>
-                <td>895e3c0431b5eb6579e89498275d99821a7279f3bfb00cb9f5eae7b04ab35d3f</td>
-                <td>Testnet</td>
-                <td>AC</td>
-                <td>0.0.1</td>
-                <td>172.0.10.12</td>
-                <td>42069</td>
-                <td>SA3pRFbZEe353SgebHdGl</td>
-            </tr>
-            <tr>
-                <td>895e3c0431b5eb6579e89498275d99821a7279f3bfb00cb9f5eae7b04ab35d3f</td>
-                <td>Testnet</td>
-                <td>AC</td>
-                <td>0.0.1</td>
-                <td>172.0.10.12</td>
-                <td>42069</td>
-                <td>SA3pRFbZEe353SgebHdGl</td>
-            </tr>
-            <tr>
+            <tr v-for="(node, index) in nodes" v-bind:key="index">
                 <td>895e3c0431b5eb6579e89498275d99821a7279f3bfb00cb9f5eae7b04ab35d3f</td>
                 <td>Testnet</td>
                 <td>AC</td>
@@ -78,7 +60,8 @@ export default {
     data() {
         return {
             title: 'Catalyst',
-            subtitle: 'Network Visualiser'
+            subtitle: 'Network Visualiser',
+            nodes: [],
         }
     },
 
@@ -88,7 +71,11 @@ export default {
 
     created() {
         this.$options.sockets.node_announce = (data) => {
-            console.log(data)
+            this.$store.dispatch('SOCKET_NODE_ANNOUNCE', JSON.parse(data));
+            var node = JSON.parse(data);
+            const nodeItem = {};
+            nodeItem[node.nodeIdHash] = node.nodeId;
+            this.nodes.push(nodeItem)
         }
     },
 
@@ -99,7 +86,13 @@ export default {
         customEmit(val) {
             console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
         }
-    }
+    },
+
+    computed: {
+        getNodes() {
+            return this.$store.state.nodes
+        },
+    },    
 }
 </script>
 

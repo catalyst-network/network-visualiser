@@ -1,5 +1,7 @@
 export default {
-    SOCKET_NODE_ANNOUNCE(state, node) {
-        state.nodes.push(node)
+    SOCKET_ADD_ANNOUNCED_NODE(state, node) {
+        const nodeItem = {};
+        nodeItem[node.nodeIdHash] = node.nodeId;
+        state.nodes.push(nodeItem)
     }
 };
