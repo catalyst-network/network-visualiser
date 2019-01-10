@@ -14,7 +14,7 @@
         <h2 class="subtitle">
             {{ subtitle }}
         </h2>
-        <table class="table" width="100%">
+        <table class="table" width="100%" v-if="nodes.length > 0">
             <thead>
             <tr>
                 <th>Node Id</th>
@@ -38,14 +38,14 @@
             </tr>
             </tfoot>
             <tbody>
-            <tr v-for="(node, index) in nodes" v-bind:key="index">
-                <td>895e3c0431b5eb6579e89498275d99821a7279f3bfb00cb9f5eae7b04ab35d3f</td>
+            <tr v-for="(node, nodeIdHash) in nodes" v-bind:key="nodeIdHash">
+                <td>{{ node.nodeIdHash }}</td>
                 <td>Testnet</td>
-                <td>AC</td>
-                <td>0.0.1</td>
-                <td>172.0.10.12</td>
-                <td>42069</td>
-                <td>SA3pRFbZEe353SgebHdGl</td>
+                <td>{{ node.nodeId.client }}</td>
+                <td>{{ node.nodeId.clientVersion }}</td>
+                <td>{{ node.nodeId.ip }}</td>
+                <td>{{ node.nodeId.port }}</td>
+                <td>{{ node.nodeId.pubKey }}</td>
             </tr>
             </tbody>
         </table>
@@ -71,11 +71,8 @@ export default {
 
     created() {
         this.$options.sockets.node_announce = (data) => {
-            this.$store.dispatch('SOCKET_NODE_ANNOUNCE', JSON.parse(data));
-            var node = JSON.parse(data);
-            const nodeItem = {};
-            nodeItem[node.nodeIdHash] = node.nodeId;
-            this.nodes.push(nodeItem)
+            this.nodes.push(JSON.parse(data))
+            console.log(this.nodes)
         }
     },
 
@@ -90,6 +87,7 @@ export default {
 
     computed: {
         getNodes() {
+            console.log(this.$store.state.nodes)
             return this.$store.state.nodes
         },
     },    
