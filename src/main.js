@@ -18,7 +18,7 @@ import store from './store'
 
 Vue.use(Vuex);
 
-Vue.use(VueSocketio, io('http://127.0.0.1:8000'));
+Vue.use(VueSocketio, io('http://visuliser-websocket:8181'));
 
 library.add(faHome, faBook, faPencilAlt, faSignInAlt)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
