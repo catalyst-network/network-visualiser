@@ -1,0 +1,26 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - '@vue/cli-service > css-loader > lodash':
+        patched: '2019-07-03T22:47:18.731Z'
+    - '@vue/cli-service > webpack-dev-server > http-proxy-middleware > lodash':
+        patched: '2019-07-03T22:47:18.731Z'
+    - '@vue/cli-service > thread-loader > async > lodash':
+        patched: '2019-07-03T22:47:18.731Z'
+    - '@vue/cli-plugin-unit-jest > @vue/cli-shared-utils > request-promise-native > request-promise-core > lodash':
+        patched: '2019-07-03T22:47:18.731Z'
+    - '@vue/cli-plugin-unit-jest > jest > jest-cli > istanbul-api > async > lodash':
+        patched: '2019-07-03T22:47:18.731Z'
+    - '@vue/cli-plugin-unit-jest > jest > jest-cli > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash':
+        patched: '2019-07-03T22:47:18.731Z'
+    - '@vue/cli-plugin-unit-jest > jest > jest-cli > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash':
+        patched: '2019-07-03T22:47:18.731Z'
+    - '@vue/cli-plugin-unit-jest > jest > jest-cli > jest-runner > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash':
+        patched: '2019-07-03T22:47:18.731Z'
+    - '@vue/cli-plugin-unit-jest > jest > jest-cli > jest-runtime > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash':
+        patched: '2019-07-03T22:47:18.731Z'
+    - '@vue/cli-plugin-unit-jest > jest > jest-cli > jest-runner > jest-runtime > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash':
+        patched: '2019-07-03T22:47:18.731Z'
